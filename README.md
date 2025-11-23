@@ -1,85 +1,81 @@
-# Project Archive 2022
+# Project Archive
 
-A digital archive website designed to manage and showcase student projects from the 2022 batch. Built with **Jekyll** and styled with **Tailwind CSS**, featuring a clean, file-system inspired aesthetic.
+A digital archive for managing and showcasing student projects from the Department of Computer Science and Design.
 
-## 🚀 Features
-
-- **Batch Management**: Organized structure for 15+ student batches.
-- **Artifact Tracking**: Dedicated sections for Journals, Presentations, Source Code/Deployment, and Reports.
-- **Responsive Design**: Mobile-friendly layout with a collapsible sidebar.
-- **Static & Fast**: Zero-config deployment to GitHub Pages.
-- **Custom Styling**: "Archive" theme using the _Space Mono_ typeface.
-
-## 🛠️ Tech Stack
-
-- **Core**: [Jekyll](https://jekyllrb.com/) (Static Site Generator)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Font**: [Space Mono](https://fonts.google.com/specimen/Space+Mono)
-
-## 🏁 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Make sure you have the following installed:
 
-- **Ruby** (for Jekyll)
-- **Node.js** (for Tailwind CSS)
+- **Ruby** (required for [Jekyll](https://jekyllrb.com/))
+- **Node.js** (required for [Tailwind CSS](https://tailwindcss.com/))
 
 ### Installation
 
-1.  **Clone the repository**:
+1. **Clone the repository:**
 
-    ```bash
-    git clone <repository-url>
-    cd project-archive-2022-batch
-    ```
+   ```bash
+   git clone https://github.com/violetto-rose/csd-project-archive.git
+   cd csd-project-archive
+   ```
 
-2.  **Install Ruby dependencies**:
+2. **Install Ruby dependencies:**
 
-    ```bash
-    gem install bundler
-    bundle install
-    ```
+   ```bash
+   gem install bundler
+   bundle install
+   ```
 
-3.  **Install Node dependencies**:
-    ```bash
-    npm install
-    ```
+3. **Install Node.js dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Running Locally
+### Running the Project Locally
 
-To work on the site, you need to run two processes (or run them sequentially):
+You need to run both the CSS watcher and the Jekyll server in separate terminals:
 
-1.  **Build CSS** (Watch mode):
+1. **Start Tailwind CSS in watch mode:**
 
-    ```bash
-    npm run watch:css
-    ```
+   ```bash
+   npm run watch:css
+   ```
 
-2.  **Start Jekyll Server**:
-    ```bash
-    bundle exec jekyll serve
-    ```
+2. **Start the Jekyll server:**
+   ```bash
+   bundle exec jekyll serve
+   ```
 
-Visit `http://localhost:4000` to view the site.
+Visit [http://localhost:4000](http://localhost:4000) to view the site.
 
-## 📝 Managing Content
+## Before Committing
 
-Content is managed via Markdown files in the `_batches/` directory.
+**Reminder:** Before committing your changes, make sure to build the latest CSS:
 
-1.  Open `_batches/batch-XX.md`.
-2.  Update the **Front Matter** with links:
-    ```yaml
-    ---
-    title: "Batch 01"
-    journal_link: "https://..."
-    ppt_link: "https://..."
-    code_link: "https://..."
-    report_link: "https://..."
-    ---
-    ```
-3.  Update the description and team members in the markdown body.
+```bash
+npm run build:css
+```
 
-## 📄 License
+This ensures your production CSS is updated and committed.
 
-This project is open source and available under the [MIT License](LICENSE).
+## Managing Content
+
+All project batch data is managed in Markdown files in the `_batches/` directory.
+
+1. Open (or create) the appropriate file: `_batches/batch-XX.md`
+2. Update the front matter with the relevant links:
+   ```yaml
+   ---
+   title: "Batch 01"
+   journal_link: "https://..."
+   ppt_link: "https://..."
+   code_link: "https://..."
+   report_link: "https://..."
+   ---
+   ```
+3. Add or update the project description and team members in the Markdown body.
+
+## License
+
+This project is open source under the [MIT License](LICENSE).
