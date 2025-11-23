@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode colors */
+    --bg-primary: #f0f0f0;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f9f9f9;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4b5563;
+    --text-tertiary: #6b7280;
+    --border-primary: #333333;
+    --border-secondary: #d1d5db;
+    --shadow-color: rgba(51, 51, 51, 1);
+    --shadow-color-light: rgba(200, 200, 200, 0.3);
+    --hover-bg: #f3f4f6;
+    --active-bg: #e5e7eb;
+  }
+
+  .dark {
+    color-scheme: dark;
+    /* Dark mode colors */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-tertiary: #9ca3af;
+    --border-primary: #4b5563;
+    --border-secondary: #374151;
+    --shadow-color: rgba(200, 200, 200, 0.3);
+    --shadow-color-light: rgba(200, 200, 200, 0.1);
+    --hover-bg: #1f2937;
+    --active-bg: #374151;
+  }
+
+  body {
+    @apply font-mono;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    line-height: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  h6 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    list-style-type: disc;
+  }
+
+  li {
+    margin-bottom: 0.35rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+}
+
+@layer components {
+  .archive-card {
+    @apply border-2 p-4;
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+  }
+
+  .archive-btn {
+    @apply inline-block border-2 px-4 py-2 active:translate-y-1 active:shadow-none;
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    box-shadow: 2px 2px 0px 0px var(--shadow-color);
+  }
+
+  .archive-btn:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .archive-btn:disabled,
+  .archive-btn[disabled] {
+    @apply cursor-not-allowed opacity-50;
+    pointer-events: none;
+  }
+
+  .archive-btn:disabled:hover,
+  .archive-btn[disabled]:hover {
+    background-color: var(--bg-secondary);
+    transform: none;
+    box-shadow: 2px 2px 0px 0px var(--shadow-color);
+  }
+
+  /* Sidebar collapse styles */
+  .sidebar {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+  }
+
+  /* Desktop collapsed state */
+  .sidebar.sidebar-collapsed {
+    @apply md:w-16;
+  }
+
+  .sidebar.sidebar-collapsed .sidebar-header {
+    @apply justify-center;
+  }
+
+  .sidebar.sidebar-collapsed .sidebar-content {
+    @apply w-0 overflow-hidden whitespace-nowrap opacity-0;
+  }
+
+  .sidebar.sidebar-collapsed .sidebar-title {
+    @apply w-0 overflow-hidden whitespace-nowrap opacity-0;
+  }
+
+  .sidebar.sidebar-collapsed .sidebar-text {
+    @apply w-0 overflow-hidden whitespace-nowrap opacity-0;
+  }
+
+  .sidebar.sidebar-collapsed #sidebar-toggle {
+    @apply ml-0;
+  }
+
+  .sidebar.sidebar-collapsed .sidebar-header .flex.items-center.gap-2 {
+    @apply flex-col-reverse gap-0;
+  }
+
+  .sidebar.sidebar-collapsed .nav-link {
+    gap: 0;
+  }
+
+  .sidebar.sidebar-collapsed .year-toggle .year-chevron {
+    @apply w-0 overflow-hidden opacity-0;
+  }
+
+  .sidebar.sidebar-collapsed .year-toggle .sidebar-text {
+    @apply w-0 overflow-hidden opacity-0;
+  }
+
+  .year-number-collapsed {
+    @apply w-0 overflow-hidden opacity-0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sidebar.sidebar-collapsed .year-number-collapsed {
+    @apply w-auto overflow-visible opacity-100;
+  }
+
+  /* Project card content areas */
+  .card-content {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-secondary);
+  }
+
+  /* Badge styles */
+  .badge-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+  }
+
+  /* Icon colors */
+  .material-symbols-outlined {
+    color: inherit;
+  }
+
+  /* Background pattern */
+  .bg-pattern {
+    background-image: radial-gradient(var(--text-primary) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.05;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .sidebar {
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar.sidebar-collapsed {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+
+  /* Touch-friendly interactions */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Improve scrollbar on mobile */
+  @media (max-width: 768px) {
+    .sidebar nav {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Year toggle styles */
+  .year-toggle {
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-tertiary);
+  }
+
+  .year-toggle .sidebar-text {
+    color: var(--text-tertiary);
+  }
+
+  .year-chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .year-batches {
+    max-height: 2000px;
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease-out,
+      opacity 0.2s ease-out;
+    opacity: 1;
+  }
+
+  .year-batches.year-collapsed {
+    max-height: 0;
+    opacity: 0;
+    transition:
+      max-height 0.3s ease-in,
+      opacity 0.2s ease-in;
+  }
+
+  .sidebar-year-group {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Utility classes using CSS variables */
+  .bg-var-primary {
+    background-color: var(--bg-primary);
+  }
+
+  .bg-var-secondary {
+    background-color: var(--bg-secondary);
+  }
+
+  .bg-var-tertiary {
+    background-color: var(--bg-tertiary);
+  }
+
+  .text-var-primary {
+    color: var(--text-primary);
+  }
+
+  .text-var-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-var-tertiary {
+    color: var(--text-tertiary);
+  }
+
+  .border-var-primary {
+    border-color: var(--border-primary);
+  }
+
+  .border-var-secondary {
+    border-color: var(--border-secondary);
+  }
+
+  .hover-bg-var {
+    transition: background-color 0.2s;
+  }
+
+  .hover-bg-var:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .sidebar-header {
+    background-color: var(--bg-tertiary);
+  }
+
+  .sidebar-header button:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .nav-link {
+    color: var(--text-primary);
+    border-color: transparent;
+  }
+
+  .nav-link:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--border-primary);
+  }
+
+  .nav-link-active {
+    background-color: var(--active-bg);
+    border-color: var(--border-primary);
+  }
+
+  .shadow-var {
+    box-shadow: 2px 2px 0px 0px var(--shadow-color);
+  }
+
+  .shadow-var-lg {
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+  }
+
+  .divider-line {
+    background-color: var(--text-primary);
+  }
+
+  .badge-dark {
+    background-color: var(--text-primary);
+    color: var(--bg-secondary);
+  }
+
+  .text-success {
+    color: #16a34a;
+  }
+
+  .dark .text-success {
+    color: #4ade80;
+  }
+
+  /* Embed Modal Styles */
+  .embed-modal {
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay {
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-content {
+    animation: modalFadeIn 0.3s ease;
+    max-height: 95vh;
+  }
+
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  #modal-iframe {
+    transition: opacity 0.3s ease;
+  }
+
+  #modal-loading {
+    transition: opacity 0.3s ease;
+  }
+
+  /* Mobile modal adjustments */
+  @media (max-width: 768px) {
+    .modal-content {
+      height: 100vh;
+      max-height: 100vh;
+      border-radius: 0;
+    }
+
+    .modal-header {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+title: "Project Archive 2022"
+description: "Archive of student projects and reports."
+baseurl: ""
+url: ""
+
+collections:
+  batches:
+    output: true
+    sort_by: year
+    sort_order: descending
+
+defaults:
+  - scope:
+      path: ""
+      type: "batches"
+    values:
+      layout: "batch"

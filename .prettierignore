@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+vendor/
+.bundle/
+
+# Build output
+_site/
+assets/css/style.css
+
+# Jekyll
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Package files
+package-lock.json
+

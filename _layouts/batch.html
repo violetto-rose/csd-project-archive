@@ -1,0 +1,163 @@
+---
+layout: default
+---
+
+<header
+  class="border-var-primary bg-var-secondary shadow-var-lg mb-8 border-b-2 p-6 pb-4"
+>
+  <div class="flex items-start justify-between">
+    <div>
+      <span class="badge-dark mb-2 inline-block px-2 py-1 font-mono text-xs"
+        >BATCH ID: {{ page.slug | upcase }}</span
+      >
+      <h1 class="text-var-primary mb-2 text-3xl md:text-4xl">
+        {{ page.title }}
+      </h1>
+      <p class="text-var-secondary mb-0 font-mono">{{ page.description }}</p>
+    </div>
+    <div class="hidden text-right md:block">
+      <div class="text-var-tertiary text-xs">LAST UPDATED</div>
+      <div class="text-var-primary font-mono">
+        {{ site.time | date: "%Y-%m-%d" }}
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+  <!-- Journal Section -->
+  <div class="archive-card">
+    <div
+      class="border-var-primary mb-4 flex items-center justify-between border-b-2 pb-2"
+    >
+      <h2 class="text-var-primary mb-0 flex items-center gap-2 text-xl">
+        <span class="material-symbols-outlined">book</span> Journal
+      </h2>
+      <span class="badge-secondary rounded-full px-2 py-1 text-xs">DOCS</span>
+    </div>
+    <div class="border-var-secondary card-content mb-4 border p-4">
+      <p class="text-var-secondary mb-2 text-sm">
+        Weekly progress logs and documentation.
+      </p>
+      {% if page.journal_link and page.journal_link != '' %}
+      <button
+        onclick="openEmbedModal('{{ page.journal_link }}', 'journal')"
+        class="archive-btn w-full text-center"
+      >
+        View Journal ->
+      </button>
+      {% else %}
+      <button
+        disabled
+        class="archive-btn w-full cursor-not-allowed text-center opacity-50"
+      >
+        View Journal ->
+      </button>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- PPT Section -->
+  <div class="archive-card">
+    <div
+      class="border-var-primary mb-4 flex items-center justify-between border-b-2 pb-2"
+    >
+      <h2 class="text-var-primary mb-0 flex items-center gap-2 text-xl">
+        <span class="material-symbols-outlined">slideshow</span> Presentation
+      </h2>
+      <span class="badge-secondary rounded-full px-2 py-1 text-xs">SLIDES</span>
+    </div>
+    <div class="border-var-secondary card-content mb-4 border p-4">
+      <p class="text-var-secondary mb-2 text-sm">
+        Project presentation slides (PPT/PDF).
+      </p>
+      {% if page.ppt_link and page.ppt_link != '' %}
+      <button
+        onclick="openEmbedModal('{{ page.ppt_link }}', 'ppt')"
+        class="archive-btn w-full text-center"
+      >
+        View Presentation ->
+      </button>
+      {% else %}
+      <button
+        disabled
+        class="archive-btn w-full cursor-not-allowed text-center opacity-50"
+      >
+        View Presentation ->
+      </button>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Code Section -->
+  <div class="archive-card">
+    <div
+      class="border-var-primary mb-4 flex items-center justify-between border-b-2 pb-2"
+    >
+      <h2 class="text-var-primary mb-0 flex items-center gap-2 text-xl">
+        <span class="material-symbols-outlined">code</span> Source
+        Code/Deployment
+      </h2>
+      <span class="badge-secondary rounded-full px-2 py-1 text-xs">GIT</span>
+    </div>
+    <div class="border-var-secondary card-content mb-4 border p-4">
+      <p class="text-var-secondary mb-2 text-sm">
+        Repository or source code archive.
+      </p>
+      {% if page.code_link and page.code_link != '' %}
+      <a
+        href="{{ page.code_link }}"
+        target="_blank"
+        class="archive-btn w-full text-center"
+      >
+        Access Code ->
+      </a>
+      {% else %}
+      <button
+        disabled
+        class="archive-btn w-full cursor-not-allowed text-center opacity-50"
+      >
+        Access Code ->
+      </button>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Reports Section -->
+  <div class="archive-card">
+    <div
+      class="border-var-primary mb-4 flex items-center justify-between border-b-2 pb-2"
+    >
+      <h2 class="text-var-primary mb-0 flex items-center gap-2 text-xl">
+        <span class="material-symbols-outlined">description</span> Reports
+      </h2>
+      <span class="badge-secondary rounded-full px-2 py-1 text-xs">PDF</span>
+    </div>
+    <div class="border-var-secondary card-content mb-4 border p-4">
+      <p class="text-var-secondary mb-2 text-sm">
+        Final project reports and analysis.
+      </p>
+      {% if page.report_link and page.report_link != '' %}
+      <button
+        onclick="openEmbedModal('{{ page.report_link }}', 'report')"
+        class="archive-btn w-full text-center"
+      >
+        Read Report ->
+      </button>
+      {% else %}
+      <button
+        disabled
+        class="archive-btn w-full cursor-not-allowed text-center opacity-50"
+      >
+        Read Report ->
+      </button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="border-var-primary mt-8 border-t-2 p-4">
+  <h2 class="text-var-primary mb-2">Notes</h2>
+  <div class="prose text-var-secondary max-w-none font-mono text-sm">
+    {{ content }}
+  </div>
+</div>
